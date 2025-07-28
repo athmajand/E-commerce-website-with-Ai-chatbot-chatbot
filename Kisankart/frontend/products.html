@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Kisankart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Kisankart</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#contact">Contact</a>
+                    </li>
+                </ul>
+                <div class="d-flex auth-buttons">
+                    <a href="../login.php" class="btn btn-outline-light me-2">Login</a>
+                    <a href="register.html" class="btn btn-light">Register</a>
+                </div>
+                <div class="d-flex user-menu" style="display: none !important;">
+                    <a href="cart.html" class="btn btn-outline-light me-2">
+                        <i class="bi bi-cart"></i> Cart <span class="cart-count badge bg-light text-dark">0</span>
+                    </a>
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle"></i> <span class="user-name">User</span>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
+                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="orders.html">Orders</a></li>
+                            <li><a class="dropdown-item" href="wishlist.html">Wishlist</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item logout-btn" href="#">Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Search and Filter Section -->
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mb-3 mb-md-0">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="search-input" placeholder="Search products...">
+                        <button class="btn btn-success" type="button" id="search-button">
+                            <i class="bi bi-search"></i> Search
+                        </button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" id="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="price_asc">Price: Low to High</option>
+                        <option value="price_desc">Price: High to Low</option>
+                        <option value="name_asc">Name: A to Z</option>
+                        <option value="name_desc">Name: Z to A</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Filters Sidebar -->
+                <div class="col-lg-3 mb-4 mb-lg-0">
+                    <div class="card border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="mb-3">Filters</h5>
+
+                            <!-- Categories Filter -->
+                            <div class="mb-4">
+                                <h5 class="text-success mb-2">Farm fresh vegetables</h5>
+                                <h6 class="mb-2">Shop by Category</h6>
+                                <div id="categories-filter">
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" id="category-1" value="1">
+                                        <label class="form-check-label" for="category-1">
+                                            Vegetables
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" id="category-2" value="2">
+                                        <label class="form-check-label" for="category-2">
+                                            Fruits
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" id="category-4" value="4">
+                                        <label class="form-check-label" for="category-4">
+                                            Dairy
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" id="category-3" value="3">
+                                        <label class="form-check-label" for="category-3">
+                                            Grains
+                                        </label>
+                                    </div>
+
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" id="category-5" value="5">
+                                        <label class="form-check-label" for="category-5">
+                                            Spices
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input category-filter" type="checkbox" id="category-7" value="7">
+                                        <label class="form-check-label" for="category-7">
+                                            Other
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Price Range Filter -->
+                            <div class="mb-4">
+                                <h6 class="mb-2">Price Range</h6>
+                                <div class="row g-2">
+                                    <div class="col-6">
+                                        <input type="number" class="form-control form-control-sm" id="min-price" placeholder="Min">
+                                    </div>
+                                    <div class="col-6">
+                                        <input type="number" class="form-control form-control-sm" id="max-price" placeholder="Max">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Availability Filter -->
+                            <div class="mb-4">
+                                <h6 class="mb-2">Availability</h6>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="in-stock-filter" checked>
+                                    <label class="form-check-label" for="in-stock-filter">
+                                        In Stock
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Apply Filters Button -->
+                            <button class="btn btn-success w-100" id="apply-filters-btn">
+                                Apply Filters
+                            </button>
+
+                            <!-- Clear Filters Link -->
+                            <div class="text-center mt-2">
+                                <a href="#" id="clear-filters-link" class="text-decoration-none">Clear all filters</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="col-lg-9">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 id="products-heading">All Products</h4>
+                        <div class="text-muted" id="products-count">Loading...</div>
+                    </div>
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="products-container">
+                        <!-- Products will be loaded here -->
+                        <div class="col-12 text-center py-5">
+                            <div class="spinner-border text-success" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav class="mt-5" aria-label="Products pagination">
+                        <ul class="pagination justify-content-center" id="pagination-container">
+                            <!-- Pagination will be loaded here -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container px-5">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Kisan Kart</h5>
+                    <p>Connecting farmers and customers for a better agricultural ecosystem.</p>
+                </div>
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="products.html" class="text-white">Products</a></li>
+                        <li><a href="index.html#about" class="text-white">About Us</a></li>
+                        <li><a href="login.html" class="text-white">Login</a></li>
+                        <li><a href="register.html" class="text-white">Register</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact Us</h5>
+                    <p>Email: info@kisankart.com<br>
+                    Phone: +91 1234567890</p>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p class="small mb-0">© 2025 Kisan Kart. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

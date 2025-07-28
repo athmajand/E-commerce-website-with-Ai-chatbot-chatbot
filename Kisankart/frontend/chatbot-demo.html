@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisan Kart - Chatbot Demo</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .feature-card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            height: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .chatbot-demo-section {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .demo-instructions {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .demo-button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .demo-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+        }
+        
+        .sample-queries {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .query-tag {
+            display: inline-block;
+            background: #e8f5e8;
+            color: #2e7d32;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid #c8e6c9;
+        }
+        
+        .query-tag:hover {
+            background: #4CAF50;
+            color: white;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-success" href="index.php">
+                <i class="fas fa-leaf"></i> Kisan Kart
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.php">
+                            <i class="fas fa-shopping-basket"></i> Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="customer-service.html">
+                            <i class="fas fa-headset"></i> Support
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="chatbot-demo.html">
+                            <i class="fas fa-robot"></i> AI Assistant
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h1 class="display-4 fw-bold mb-4">
+                        <i class="fas fa-robot me-3"></i>
+                        Meet Your AI Assistant
+                    </h1>
+                    <p class="lead mb-4">
+                        Get instant help with orders, products, delivery information, and more! 
+                        Our smart chatbot is available 24/7 to assist you.
+                    </p>
+                    <button class="btn demo-button btn-lg" onclick="openChatbot()">
+                        <i class="fas fa-comments me-2"></i>
+                        Start Chatting Now
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center mb-5">
+                <div class="col-12">
+                    <h2 class="fw-bold mb-3">What Our AI Assistant Can Do</h2>
+                    <p class="text-muted">Powered by advanced NLP technology with rule-based fallback</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <i class="fas fa-shipping-fast fa-3x text-success"></i>
+                            </div>
+                            <h5 class="card-title">Order Tracking</h5>
+                            <p class="card-text">
+                                Get real-time updates on your order status, delivery estimates, 
+                                and tracking information instantly.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <i class="fas fa-info-circle fa-3x text-success"></i>
+                            </div>
+                            <h5 class="card-title">Product Information</h5>
+                            <p class="card-text">
+                                Learn about our fresh farm products, organic options, 
+                                farmer details, and quality guarantees.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card feature-card">
+                        <div class="card-body text-center p-4">
+                            <div class="mb-3">
+                                <i class="fas fa-credit-card fa-3x text-success"></i>
+                            </div>
+                            <h5 class="card-title">Payment & Returns</h5>
+                            <p class="card-text">
+                                Get help with payment methods, return policies, 
+                                refunds, and account-related queries.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="chatbot-demo-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="demo-instructions">
+                        <h3 class="text-center mb-4">
+                            <i class="fas fa-play-circle text-success me-2"></i>
+                            Try Our AI Assistant
+                        </h3>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-lightbulb text-warning me-2"></i>How to Use:</h5>
+                                <ol class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        Click the chat icon in the bottom-right corner
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        Type your question or use quick reply buttons
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        Get instant responses powered by AI
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        Escalate to human support if needed
+                                    </li>
+                                </ol>
+                            </div>
+                            <div class="col-md-6">
+                                <h5><i class="fas fa-clock text-info me-2"></i>Available 24/7:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-2">
+                                        <i class="fas fa-moon text-primary me-2"></i>
+                                        No waiting time - instant responses
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-globe text-primary me-2"></i>
+                                        Works on all devices and browsers
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-shield-alt text-primary me-2"></i>
+                                        Secure and privacy-focused
+                                    </li>
+                                    <li class="mb-2">
+                                        <i class="fas fa-language text-primary me-2"></i>
+                                        Natural language understanding
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="text-center mt-4">
+                            <button class="btn demo-button" onclick="openChatbot()">
+                                <i class="fas fa-robot me-2"></i>
+                                Open AI Assistant
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="sample-queries">
+                        <h5 class="mb-3">
+                            <i class="fas fa-question-circle text-info me-2"></i>
+                            Try These Sample Questions:
+                        </h5>
+                        <div class="mb-3">
+                            <span class="query-tag" onclick="sendSampleQuery('Hello')">Hello</span>
+                            <span class="query-tag" onclick="sendSampleQuery('Track my order')">Track my order</span>
+                            <span class="query-tag" onclick="sendSampleQuery('What are your delivery times?')">Delivery times</span>
+                            <span class="query-tag" onclick="sendSampleQuery('Payment methods')">Payment methods</span>
+                            <span class="query-tag" onclick="sendSampleQuery('Return policy')">Return policy</span>
+                        </div>
+                        <div class="mb-3">
+                            <span class="query-tag" onclick="sendSampleQuery('Tell me about organic products')">Organic products</span>
+                            <span class="query-tag" onclick="sendSampleQuery('How to contact farmer?')">Contact farmer</span>
+                            <span class="query-tag" onclick="sendSampleQuery('Account help')">Account help</span>
+                            <span class="query-tag" onclick="sendSampleQuery('Fresh produce quality')">Product quality</span>
+                            <span class="query-tag" onclick="sendSampleQuery('Pricing information')">Pricing info</span>
+                        </div>
+                        <p class="text-muted small mb-0">
+                            <i class="fas fa-info-circle me-1"></i>
+                            Click on any question above to automatically send it to the chatbot, or type your own question!
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-leaf text-success me-2"></i>Kisan Kart</h5>
+                    <p>Connecting farmers and customers with AI-powered assistance.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>&copy; 2023 Kisan Kart. All rights reserved.</p>
+                    <p>
+                        <small>
+                            <i class="fas fa-robot me-1"></i>
+                            Powered by Advanced NLP Technology
+                        </small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Chatbot Integration -->
+    <script src="js/chatbot-integration.js"></script>
+    
+    <script>
+        // Demo functions
+        function openChatbot() {
+            if (window.KisanKartChatbotUtils) {
+                window.KisanKartChatbotUtils.openChat();
+            } else {
+                // Fallback - try to click the chatbot toggle
+                setTimeout(() => {
+                    const toggle = document.getElementById('chatbot-toggle');
+                    if (toggle) {
+                        toggle.click();
+                    } else {
+                        alert('Chatbot is loading... Please try again in a moment.');
+                    }
+                }, 1000);
+            }
+        }
+        
+        function sendSampleQuery(query) {
+            // Open chatbot first
+            openChatbot();
+            
+            // Wait a bit then set the input value
+            setTimeout(() => {
+                const input = document.getElementById('chatbot-input');
+                if (input) {
+                    input.value = query;
+                    input.focus();
+                    
+                    // Enable send button
+                    const sendBtn = document.getElementById('send-btn');
+                    if (sendBtn) {
+                        sendBtn.disabled = false;
+                    }
+                    
+                    // Optionally auto-send
+                    setTimeout(() => {
+                        if (sendBtn && !sendBtn.disabled) {
+                            sendBtn.click();
+                        }
+                    }, 500);
+                }
+            }, 1000);
+        }
+        
+        // Show notification about chatbot
+        setTimeout(() => {
+            if (!localStorage.getItem('chatbot_intro_shown')) {
+                const toast = document.createElement('div');
+                toast.className = 'position-fixed bottom-0 end-0 p-3';
+                toast.style.zIndex = '9998';
+                toast.innerHTML = `
+                    <div class="toast show" role="alert">
+                        <div class="toast-header">
+                            <i class="fas fa-robot text-success me-2"></i>
+                            <strong class="me-auto">AI Assistant</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">
+                            Hi! I'm your AI assistant. Click the chat icon to get started! 🌱
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(toast);
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    toast.remove();
+                }, 5000);
+                
+                localStorage.setItem('chatbot_intro_shown', 'true');
+            }
+        }, 3000);
+    </script>
+</body>
+</html>

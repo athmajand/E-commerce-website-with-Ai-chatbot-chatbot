@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFrame Test - Kisan Kart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .iframe-container {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center mb-4">IFrame Navigation Test</h1>
+        <p class="text-center mb-5">This page tests navigation within an iframe.</p>
+        
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">IFrame Content</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="iframe-container">
+                            <iframe id="test-frame" src="frontend/customer_dashboard.php" title="Test Frame"></iframe>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <button id="load-dashboard" class="btn btn-primary">Load Dashboard</button>
+                            <button id="load-profile" class="btn btn-success">Load Profile</button>
+                            <button id="load-static" class="btn btn-secondary">Load Static Profile</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Direct Links</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Try these direct links:</p>
+                        
+                        <div class="list-group">
+                            <a href="frontend/customer_dashboard.php" class="list-group-item list-group-item-action" target="_blank">Dashboard (New Window)</a>
+                            <a href="profile_static.html" class="list-group-item list-group-item-action" target="_blank">Static Profile (New Window)</a>
+                            <a href="profile_direct.html" class="list-group-item list-group-item-action" target="_blank">Direct Links Page (New Window)</a>
+                            <a href="check_js.php" class="list-group-item list-group-item-action" target="_blank">JavaScript Diagnostics (New Window)</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // IFrame navigation buttons
+        document.getElementById('load-dashboard').addEventListener('click', function() {
+            document.getElementById('test-frame').src = 'frontend/customer_dashboard.php';
+        });
+        
+        document.getElementById('load-profile').addEventListener('click', function() {
+            document.getElementById('test-frame').src = 'frontend/customer_profile.php';
+        });
+        
+        document.getElementById('load-static').addEventListener('click', function() {
+            document.getElementById('test-frame').src = 'profile_static.html';
+        });
+    </script>
+</body>
+</html>

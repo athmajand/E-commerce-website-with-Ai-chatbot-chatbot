@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Image Fit & Zoom - Kisan Kart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="frontend/css/dynamic-image-styles.css">
+    <link rel="stylesheet" href="frontend/css/product-cards.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .test-section {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-title {
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+        .product-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        .card-img-top {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+            background-color: #f8f9fa;
+        }
+        .zoom-instruction {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="text-center mb-4">Image Fit & Zoom Test - Kisan Kart</h1>
+        
+        <div class="zoom-instruction">
+            <h5><i class="fas fa-info-circle"></i> Hover over images to see zoom effects!</h5>
+            <p>Images will smoothly zoom in when you hover over them, demonstrating the improved visual interaction.</p>
+        </div>
+        
+        <div class="test-section">
+            <h3 class="test-title">Test 1: Product Cards with Zoom Effects</h3>
+            <p>Hover over these product cards to see the smooth zoom effects. Images should properly fill their containers and zoom on hover.</p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="image-container" style="background-color: #f8f9fa;">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="cover" 
+                                 data-background="light"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+QXBwbGU8L3RleHQ+PC9zdmc+';">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Apple (Cover Mode)</h5>
+                            <p class="card-text">Default size, medium padding, cover fit with zoom effect</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="image-container" style="background-color: #ffffff;">
+                            <img src="uploads/products/1747571779_Carrot1.jpg" 
+                                 class="product-image" 
+                                 alt="Carrot" 
+                                 data-size="large" 
+                                 data-padding="small" 
+                                 data-fit="contain" 
+                                 data-background="white"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+Q2Fycm90PC90ZXh0Pjwvc3ZnPg==';">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Carrot (Contain Mode)</h5>
+                            <p class="card-text">Large size, small padding, contain fit with zoom effect</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="image-container" style="background-color: #6c757d;">
+                            <img src="uploads/products/1747572297_Carrot1.jpg" 
+                                 class="product-image" 
+                                 alt="Carrot 2" 
+                                 data-size="small" 
+                                 data-padding="large" 
+                                 data-fit="cover" 
+                                 data-background="dark"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+Q2Fycm90IDI8L3RleHQ+PC9zdmc+';">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Carrot 2 (Small Size)</h5>
+                            <p class="card-text">Small size, large padding, cover fit with zoom effect</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3 class="test-title">Test 2: Different Fit Modes with Zoom</h3>
+            <p>Testing different object-fit modes to see how images scale and zoom.</p>
+            
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="image-container">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple Contain" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="contain" 
+                                 data-background="light"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+Q29udGFpbjwvdGV4dD48L3N2Zz4=';">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Contain Mode</h5>
+                            <p class="card-text">Full image visible, maintains aspect ratio, zooms on hover</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="image-container">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple Cover" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="cover" 
+                                 data-background="light"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+Q292ZXI8L3RleHQ+PC9zdmc+';">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Cover Mode</h5>
+                            <p class="card-text">Fills container, may crop parts, zooms on hover</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <div class="image-container">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple Fill" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="fill" 
+                                 data-background="light"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+RmlsbDwvdGV4dD48L3N2Zz4=';">
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title">Fill Mode</h5>
+                            <p class="card-text">Stretches to fill container, may distort, zooms on hover</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3 class="test-title">Test 3: Different Background Colors with Zoom</h3>
+            <p>Testing different background colors for image containers with zoom effects.</p>
+            
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <div class="image-container" style="background-color: #f8f9fa;">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple Light" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="cover" 
+                                 data-background="light"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+TGlnaHQ8L3RleHQ+PC9zdmc+';">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Light Background</h6>
+                            <p class="card-text small">Hover to zoom</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <div class="image-container" style="background-color: #ffffff;">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple White" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="cover" 
+                                 data-background="white"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+V2hpdGU8L3RleHQ+PC9zdmc+';">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">White Background</h6>
+                            <p class="card-text small">Hover to zoom</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <div class="image-container" style="background-color: #6c757d;">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple Dark" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="cover" 
+                                 data-background="dark"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+RGFyazwvdGV4dD48L3N2Zz4=';">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Dark Background</h6>
+                            <p class="card-text small">Hover to zoom</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="card product-card">
+                        <div class="image-container" style="background-color: transparent;">
+                            <img src="uploads/products/1750442556_Apple.webp" 
+                                 class="product-image" 
+                                 alt="Apple Transparent" 
+                                 data-size="default" 
+                                 data-padding="medium" 
+                                 data-fit="cover" 
+                                 data-background="transparent"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+VHJhbnNwYXJlbnQ8L3RleHQ+PC9zdmc+';">
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-title">Transparent Background</h6>
+                            <p class="card-text small">Hover to zoom</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h3 class="test-title">Instructions</h3>
+            <div class="alert alert-info">
+                <h5>What to check:</h5>
+                <ul>
+                    <li><strong>Image Scaling:</strong> Images should properly scale to fill their containers</li>
+                    <li><strong>Zoom Effects:</strong> Hover over images to see smooth zoom transitions</li>
+                    <li><strong>Contain Mode:</strong> Images should be fully visible within their containers, maintaining aspect ratio</li>
+                    <li><strong>Cover Mode:</strong> Images should fill the entire container, potentially cropping parts of the image</li>
+                    <li><strong>Fill Mode:</strong> Images should stretch to fill the container, potentially distorting the aspect ratio</li>
+                    <li><strong>Different Sizes:</strong> Images should scale appropriately based on the size setting</li>
+                    <li><strong>Padding:</strong> Images should have appropriate spacing around them</li>
+                    <li><strong>Background Colors:</strong> Container backgrounds should match the setting</li>
+                    <li><strong>Smooth Transitions:</strong> All zoom effects should be smooth and responsive</li>
+                </ul>
+                <p><strong>Expected Result:</strong> All images should properly fill their containers with smooth zoom effects on hover and no overflow.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

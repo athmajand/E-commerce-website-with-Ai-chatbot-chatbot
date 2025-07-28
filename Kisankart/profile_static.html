@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Profile - Kisan Kart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    <style>
+        .profile-header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 2rem 0;
+        }
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid white;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="profile-header">
+        <div class="container text-center">
+            <img src="https://via.placeholder.com/150" alt="Profile Image" class="profile-image mb-3">
+            <h1>My Profile</h1>
+            <p>Manage your personal information</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <!-- Navigation Links -->
+                <div class="mb-4">
+                    <a href="frontend/customer_dashboard.php" class="btn btn-outline-success me-2">
+                        <i class="bi bi-speedometer2"></i> Dashboard
+                    </a>
+                    <a href="frontend/customer_orders.php" class="btn btn-outline-success me-2">
+                        <i class="bi bi-box"></i> Orders
+                    </a>
+                    <a href="frontend/customer_wishlist.php" class="btn btn-outline-success me-2">
+                        <i class="bi bi-heart"></i> Wishlist
+                    </a>
+                    <a href="logout.php" class="btn btn-outline-danger">
+                        <i class="bi bi-box-arrow-right"></i> Logout
+                    </a>
+                </div>
+                
+                <!-- Profile Card -->
+                <div class="card mb-4">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">Personal Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <!-- Static Profile Form -->
+                        <form>
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="firstName" class="form-label">First Name</label>
+                                    <input type="text" class="form-control" id="firstName" value="John" readonly>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="lastName" class="form-label">Last Name</label>
+                                    <input type="text" class="form-control" id="lastName" value="Doe" readonly>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email Address</label>
+                                <input type="email" class="form-control" id="email" value="john.doe@example.com" readonly>
+                            </div>
+                            <div class="mb-3">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" value="1234567890" readonly>
+                            </div>
+                            <button type="button" class="btn btn-success" disabled>Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- Navigation Test Links -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">Navigation Test Links</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group">
+                            <a href="profile_direct.html" class="list-group-item list-group-item-action">Go to Direct Links Page</a>
+                            <a href="frontend/customer_dashboard.php" class="list-group-item list-group-item-action">Go to Dashboard</a>
+                            <a href="frontend/customer_profile.php" class="list-group-item list-group-item-action">Go to Old Profile Page</a>
+                            <a href="frontend/new_profile.php" class="list-group-item list-group-item-action">Go to New Profile Page</a>
+                            <a href="profile_static.html" class="list-group-item list-group-item-action">Refresh This Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="py-4 bg-dark text-white">
+        <div class="container text-center">
+            <p class="mb-0">© 2025 Kisan Kart. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

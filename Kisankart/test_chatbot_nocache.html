@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test - No Cache</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        .test-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            padding: 30px;
+        }
+        .alert-custom {
+            border-left: 4px solid #4CAF50;
+            background: #f8fff8;
+        }
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 5px;
+            padding: 15px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+        .status-check {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border-left: 4px solid #4CAF50;
+            background: #f8fff8;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="text-center mb-4">
+            <h1><i class="fas fa-robot text-success"></i> Chatbot Cache-Free Test</h1>
+            <p class="text-muted">This page loads the chatbot with cache-busting to ensure you see the latest changes</p>
+        </div>
+
+        <div class="alert alert-custom">
+            <h4><i class="fas fa-info-circle"></i> What to Look For:</h4>
+            <ul class="mb-0">
+                <li><strong>Robot Icon:</strong> Should see <i class="fas fa-robot text-success"></i> instead of SVG image</li>
+                <li><strong>Title:</strong> Should say "Kisankart Assistant" not "Kisan Kart Assistant"</li>
+                <li><strong>Footer:</strong> Should say "Powered by Kisankart AI"</li>
+                <li><strong>Welcome Message:</strong> Should say "Welcome to Kisankart!"</li>
+            </ul>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <h3>🔍 Visual Inspection</h3>
+                <div class="status-check">
+                    <strong>Step 1:</strong> Look for the green chat button in bottom-right corner
+                </div>
+                <div class="status-check">
+                    <strong>Step 2:</strong> Click the chat button to open
+                </div>
+                <div class="status-check">
+                    <strong>Step 3:</strong> Check the header for robot icon and "Kisankart Assistant"
+                </div>
+                <div class="status-check">
+                    <strong>Step 4:</strong> Scroll down in chat to see footer "Powered by Kisankart AI"
+                </div>
+            </div>
+            <div class="col-md-6">
+                <h3>🛠️ Technical Check</h3>
+                <button class="btn btn-primary mb-2" onclick="checkChatbotElements()">
+                    <i class="fas fa-search"></i> Check Elements
+                </button>
+                <button class="btn btn-success mb-2" onclick="openChatbot()">
+                    <i class="fas fa-comments"></i> Open Chatbot
+                </button>
+                <button class="btn btn-warning mb-2" onclick="clearCache()">
+                    <i class="fas fa-trash"></i> Clear Cache
+                </button>
+                <div id="check-results" class="code-block" style="min-height: 100px;">
+                    Click "Check Elements" to verify the chatbot is properly updated...
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h3>🚨 If You Still See Old Version:</h3>
+            <div class="alert alert-warning">
+                <ol>
+                    <li><strong>Hard Refresh:</strong> Press <kbd>Ctrl+F5</kbd> (Windows) or <kbd>Cmd+Shift+R</kbd> (Mac)</li>
+                    <li><strong>Clear Browser Cache:</strong> Open DevTools (F12) → Right-click refresh → "Empty Cache and Hard Reload"</li>
+                    <li><strong>Incognito Mode:</strong> Open this page in incognito/private browsing mode</li>
+                    <li><strong>Different Browser:</strong> Try opening in a different browser</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load chatbot with cache busting -->
+    <script>
+        // Add timestamp to prevent caching
+        const timestamp = Date.now();
+        
+        // Load chatbot widget directly with cache busting
+        const script = document.createElement('script');
+        script.src = `frontend/js/chatbot-widget.js?v=${timestamp}`;
+        script.onload = function() {
+            console.log('Chatbot widget loaded with timestamp:', timestamp);
+            
+            // Initialize chatbot
+            if (window.KisanKartChatbot) {
+                window.kisanKartChatbot = new window.KisanKartChatbot({
+                    apiBaseUrl: window.location.origin + '/Kisankart/api/chatbot',
+                    position: 'bottom-right',
+                    theme: 'green',
+                    debug: true
+                });
+                console.log('Chatbot initialized successfully');
+            }
+        };
+        script.onerror = function() {
+            console.error('Failed to load chatbot widget');
+            document.getElementById('check-results').innerHTML = '❌ Failed to load chatbot widget script';
+        };
+        document.head.appendChild(script);
+
+        // Test functions
+        function checkChatbotElements() {
+            const results = document.getElementById('check-results');
+            let output = `<strong>Chatbot Element Check (${new Date().toLocaleTimeString()}):</strong><br><br>`;
+            
+            // Check if chatbot exists
+            const chatbot = document.getElementById('kisankart-chatbot');
+            if (chatbot) {
+                output += '✅ Chatbot element found with ID: kisankart-chatbot<br>';
+                
+                // Check for robot icon
+                const robotIcon = document.querySelector('.bot-avatar-icon i.fa-robot');
+                if (robotIcon) {
+                    output += '✅ Robot icon found (.bot-avatar-icon i.fa-robot)<br>';
+                } else {
+                    output += '❌ Robot icon NOT found<br>';
+                }
+                
+                // Check for old SVG image
+                const oldSvg = document.querySelector('img[alt*="Kisan Kart Bot"]');
+                if (oldSvg) {
+                    output += '❌ Old SVG image still present<br>';
+                } else {
+                    output += '✅ Old SVG image removed<br>';
+                }
+                
+                // Check title
+                const title = document.querySelector('.chatbot-header h4');
+                if (title) {
+                    if (title.textContent.includes('Kisankart')) {
+                        output += '✅ Title correctly shows "Kisankart Assistant"<br>';
+                    } else {
+                        output += `❌ Title shows: "${title.textContent}"<br>`;
+                    }
+                } else {
+                    output += '❌ Title element not found<br>';
+                }
+                
+                // Check footer
+                const footer = document.querySelector('.input-footer small');
+                if (footer) {
+                    if (footer.textContent.includes('Kisankart')) {
+                        output += '✅ Footer correctly shows "Powered by Kisankart AI"<br>';
+                    } else {
+                        output += `❌ Footer shows: "${footer.textContent}"<br>`;
+                    }
+                } else {
+                    output += '❌ Footer element not found<br>';
+                }
+                
+            } else {
+                output += '❌ Chatbot element not found<br>';
+            }
+            
+            results.innerHTML = output;
+        }
+        
+        function openChatbot() {
+            if (window.kisanKartChatbot) {
+                window.kisanKartChatbot.openChat();
+            } else {
+                alert('Chatbot not initialized yet. Please wait a moment and try again.');
+            }
+        }
+        
+        function clearCache() {
+            // Clear localStorage
+            localStorage.removeItem('chatbot_conversation_id');
+            localStorage.removeItem('chatbot_welcome_shown');
+            
+            // Show instructions
+            alert('Cache cleared! Now please:\n1. Press Ctrl+F5 (or Cmd+Shift+R on Mac)\n2. Or open DevTools (F12) and right-click refresh button → "Empty Cache and Hard Reload"');
+        }
+        
+        // Auto-check after 2 seconds
+        setTimeout(checkChatbotElements, 2000);
+    </script>
+</body>
+</html>

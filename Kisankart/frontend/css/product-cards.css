@@ -1,0 +1,125 @@
+/* Product Card Styles */
+.product-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-3px); /* Reduced from -5px to minimize layout shifts */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Base product image styles - will be overridden by dynamic styles */
+.product-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Default to cover for better visual appeal */
+    object-position: center !important;
+    background-color: #f8f9fa; /* Light background for product images */
+    transition: transform 0.5s ease; /* Smooth zoom transition */
+    margin: auto; /* Center the image within the container */
+    padding: 20px; /* Add padding around the image to create zoom out effect */
+    box-sizing: border-box; /* Include padding in the total size */
+    max-width: 100% !important;
+    max-height: 100% !important;
+    display: block !important;
+}
+
+.product-card:hover .product-image {
+    transform: scale(1.03); /* Reduced from 1.05 to minimize layout shifts */
+}
+
+.product-card .card-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card .card-footer {
+    margin-top: auto; /* Ensures footer stays at bottom */
+    min-height: 58px; /* Set a fixed height for the footer to prevent layout shifts */
+}
+
+.card-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    height: 3em; /* Fixed height for description */
+    margin-bottom: 0.5rem; /* Consistent spacing */
+    min-height: 3em; /* Ensure minimum height even when empty */
+}
+
+.add-to-cart-btn, .add-to-wishlist-btn {
+    transition: all 0.3s ease;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #157347;
+    border-color: #157347;
+}
+
+.add-to-wishlist-btn:hover {
+    background-color: #f8f9fa;
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Price styling */
+.text-success {
+    color: #1e8449 !important;
+}
+
+/* Ensure price container has consistent height */
+.product-card .card-body .d-flex {
+    min-height: 2.5rem; /* Fixed height for price section */
+}
+
+.price-container {
+    min-height: 2.5rem; /* Ensure consistent height for price container */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Badge styling */
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+    font-weight: 500;
+    padding: 0.35em 0.65em;
+}
+
+/* Row and grid adjustments */
+.row#featured-products {
+    row-gap: 1.5rem; /* Add spacing between rows */
+}
+
+/* Image container improvements */
+.image-container {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    position: relative !important;
+    background-color: #f8f9fa;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767.98px) {
+    .product-card {
+        margin-bottom: 1.5rem;
+    }
+}

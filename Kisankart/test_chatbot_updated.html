@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot Test - Updated Design</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        .status-success { background: #28a745; }
+        .status-warning { background: #ffc107; }
+        .status-error { background: #dc3545; }
+        .test-button {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1><i class="fas fa-robot text-success"></i> Kisankart Chatbot Test</h1>
+            <p class="text-muted">Testing the updated chatbot with icon avatar and new branding</p>
+        </div>
+
+        <div class="test-section">
+            <h3><i class="fas fa-check-circle text-success"></i> Visual Changes Verification</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>✅ Changes Made:</h5>
+                    <ul>
+                        <li><span class="status-indicator status-success"></span>SVG image replaced with robot icon</li>
+                        <li><span class="status-indicator status-success"></span>Title changed to "Kisankart Assistant"</li>
+                        <li><span class="status-indicator status-success"></span>Footer updated to "Powered by Kisankart AI"</li>
+                        <li><span class="status-indicator status-success"></span>Welcome message updated</li>
+                        <li><span class="status-indicator status-success"></span>CSS styling for icon avatar added</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>🎨 Design Features:</h5>
+                    <ul>
+                        <li>Robot icon with circular background</li>
+                        <li>Semi-transparent white background for icon</li>
+                        <li>Consistent green theme maintained</li>
+                        <li>Responsive design preserved</li>
+                        <li>Font Awesome icons used throughout</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3><i class="fas fa-cogs text-primary"></i> Functionality Tests</h3>
+            <p>Use these buttons to test different chatbot functions:</p>
+            
+            <button class="btn btn-success test-button" onclick="openChatbot()">
+                <i class="fas fa-comments"></i> Open Chatbot
+            </button>
+            
+            <button class="btn btn-info test-button" onclick="sendTestMessage()">
+                <i class="fas fa-paper-plane"></i> Send Test Message
+            </button>
+            
+            <button class="btn btn-warning test-button" onclick="checkChatbotStatus()">
+                <i class="fas fa-heartbeat"></i> Check Status
+            </button>
+            
+            <button class="btn btn-secondary test-button" onclick="clearChatHistory()">
+                <i class="fas fa-trash"></i> Clear History
+            </button>
+        </div>
+
+        <div class="test-section">
+            <h3><i class="fas fa-terminal text-info"></i> Console Output</h3>
+            <div id="console-output" style="background: #000; color: #00ff00; padding: 15px; border-radius: 5px; font-family: monospace; min-height: 100px; max-height: 200px; overflow-y: auto;">
+                <div>Chatbot test page loaded...</div>
+                <div>Waiting for chatbot initialization...</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h3><i class="fas fa-info-circle text-warning"></i> Instructions</h3>
+            <ol>
+                <li><strong>Visual Check:</strong> Look for the chatbot toggle button in the bottom-right corner</li>
+                <li><strong>Icon Verification:</strong> Click to open and verify the robot icon appears instead of SVG</li>
+                <li><strong>Title Check:</strong> Confirm the header shows "Kisankart Assistant"</li>
+                <li><strong>Footer Check:</strong> Verify footer shows "Powered by Kisankart AI"</li>
+                <li><strong>Functionality:</strong> Test sending messages and receiving responses</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Include chatbot -->
+    <script src="frontend/js/chatbot-widget.js"></script>
+    
+    <script>
+        // Console logging function
+        function logToConsole(message, type = 'info') {
+            const console_output = document.getElementById('console-output');
+            const timestamp = new Date().toLocaleTimeString();
+            const color = type === 'error' ? '#ff4444' : type === 'success' ? '#44ff44' : '#00ff00';
+            console_output.innerHTML += `<div style="color: ${color}">[${timestamp}] ${message}</div>`;
+            console_output.scrollTop = console_output.scrollHeight;
+        }
+
+        // Test functions
+        function openChatbot() {
+            if (window.kisanKartChatbot) {
+                window.kisanKartChatbot.openChat();
+                logToConsole('Chatbot opened successfully', 'success');
+            } else {
+                logToConsole('Chatbot not initialized', 'error');
+            }
+        }
+
+        function sendTestMessage() {
+            if (window.kisanKartChatbot) {
+                // Simulate typing in the input
+                const input = document.getElementById('chatbot-input');
+                if (input) {
+                    input.value = 'Hello, this is a test message!';
+                    input.dispatchEvent(new Event('input'));
+                    logToConsole('Test message prepared in input field', 'success');
+                } else {
+                    logToConsole('Chatbot input not found - open chatbot first', 'error');
+                }
+            } else {
+                logToConsole('Chatbot not initialized', 'error');
+            }
+        }
+
+        function checkChatbotStatus() {
+            const chatbotElement = document.getElementById('kisankart-chatbot');
+            if (chatbotElement) {
+                logToConsole('✅ Chatbot element found with ID: kisankart-chatbot', 'success');
+                logToConsole(`✅ Chatbot classes: ${chatbotElement.className}`, 'success');
+                
+                const avatar = document.querySelector('.bot-avatar-icon');
+                if (avatar) {
+                    logToConsole('✅ Robot icon avatar found', 'success');
+                } else {
+                    logToConsole('❌ Robot icon avatar not found', 'error');
+                }
+                
+                const title = document.querySelector('.chatbot-header h4');
+                if (title && title.textContent.includes('Kisankart')) {
+                    logToConsole('✅ Title correctly shows "Kisankart Assistant"', 'success');
+                } else {
+                    logToConsole('❌ Title not updated correctly', 'error');
+                }
+                
+                const footer = document.querySelector('.input-footer small');
+                if (footer && footer.textContent.includes('Kisankart')) {
+                    logToConsole('✅ Footer correctly shows "Powered by Kisankart AI"', 'success');
+                } else {
+                    logToConsole('❌ Footer not updated correctly', 'error');
+                }
+            } else {
+                logToConsole('❌ Chatbot element not found', 'error');
+            }
+        }
+
+        function clearChatHistory() {
+            localStorage.removeItem('chatbot_conversation_id');
+            localStorage.removeItem('chatbot_welcome_shown');
+            logToConsole('Chat history and welcome flag cleared', 'success');
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            logToConsole('DOM loaded, initializing chatbot...');
+            
+            // Wait a bit for chatbot to initialize
+            setTimeout(() => {
+                checkChatbotStatus();
+            }, 1000);
+        });
+
+        // Override console.log to capture chatbot logs
+        const originalLog = console.log;
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            if (args[0] && typeof args[0] === 'string' && args[0].includes('Chatbot')) {
+                logToConsole(args.join(' '));
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+/* 
+ * Compatibility Fixes for Kisan Kart
+ * This file addresses compatibility issues with various browsers
+ */
+
+/* Fix for -webkit-text-size-adjust */
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Fix for text-align: -webkit-match-parent */
+[style*="text-align:-webkit-match-parent"],
+.match-parent {
+  text-align: -webkit-match-parent;
+  text-align: match-parent;
+}
+
+/* Fix for color-adjust property */
+.print-color {
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* Ensure proper text-align property order */
+.text-inherit {
+  text-align: -webkit-match-parent;
+  text-align: inherit;
+}
+
+/* Accessibility helper classes */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}

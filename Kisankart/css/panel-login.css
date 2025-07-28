@@ -1,0 +1,209 @@
+/* Panel Login CSS for Kisan Kart */
+
+/* Container styles */
+.login-page {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+}
+
+.container {
+    display: flex;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* Left panel styles */
+.left-panel {
+    flex: 1;
+    background-color: #006400;
+    color: #fff;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left-panel h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.left-panel p {
+    margin-bottom: 30px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.left-panel button {
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+}
+
+.left-panel button:hover {
+    background-color: #fff;
+    color: #006400;
+}
+
+/* Right panel styles */
+.right-panel {
+    flex: 1.5;
+    padding: 40px;
+    background-color: #fff;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+    font-weight: 600;
+}
+
+.form-container h2 i {
+    margin-right: 10px;
+    color: #006400;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 15px 12px 45px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #006400;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 100, 0, 0.1);
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
+
+.forgot-link {
+    color: #006400;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #006400;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #005000;
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+.form-switch {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+}
+
+.form-switch a {
+    color: #006400;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.form-switch a:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        max-width: 90%;
+    }
+    
+    .left-panel {
+        padding: 30px;
+    }
+    
+    .right-panel {
+        padding: 30px;
+    }
+}

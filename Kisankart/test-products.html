@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Products Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .product-card {
+            transition: transform 0.3s;
+            border: 1px solid #e0e0e0;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .product-image {
+            height: 200px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Test Products Page</h1>
+        
+        <!-- Featured Products Section -->
+        <section class="py-5" id="products">
+            <div class="container px-5">
+                <h2 class="text-center mb-5">Featured Products</h2>
+                <div class="row" id="featured-products">
+                    <!-- Product 1 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card product-card h-100">
+                            <a href="#" class="text-decoration-none">
+                                <span class="badge bg-danger position-absolute top-0 end-0 m-2">-13%</span>
+                                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top product-image" alt="Fresh Tomatoes">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Fresh Tomatoes</h5>
+                                    <p class="card-text text-muted small">Organically grown fresh tomatoes from local farms....</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="text-decoration-line-through text-muted small">₹40.00</span><br>
+                                            <span class="fs-5 fw-bold text-success">₹35.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-success flex-grow-1 me-2 add-to-cart-btn" data-product-id="3">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <button class="btn btn-outline-success add-to-wishlist-btn" data-product-id="3">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 2 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card product-card h-100">
+                            <a href="#" class="text-decoration-none">
+                                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top product-image" alt="Organic Potatoes">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Organic Potatoes</h5>
+                                    <p class="card-text text-muted small">Premium quality potatoes grown without pesticides....</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="fs-5 fw-bold text-success">₹30.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-success flex-grow-1 me-2 add-to-cart-btn" data-product-id="4">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <button class="btn btn-outline-success add-to-wishlist-btn" data-product-id="4">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Product 3 -->
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="card product-card h-100">
+                            <a href="#" class="text-decoration-none">
+                                <span class="badge bg-danger position-absolute top-0 end-0 m-2">-20%</span>
+                                <img src="https://via.placeholder.com/300x200?text=No+Image" class="card-img-top product-image" alt="Fresh Onions">
+                                <div class="card-body">
+                                    <h5 class="card-title text-dark">Fresh Onions</h5>
+                                    <p class="card-text text-muted small">High-quality onions from local farms....</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <span class="text-decoration-line-through text-muted small">₹25.00</span><br>
+                                            <span class="fs-5 fw-bold text-success">₹20.00</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="card-footer bg-transparent border-top-0 d-flex justify-content-between">
+                                <button class="btn btn-success flex-grow-1 me-2 add-to-cart-btn" data-product-id="5">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart
+                                </button>
+                                <button class="btn btn-outline-success add-to-wishlist-btn" data-product-id="5">
+                                    <i class="bi bi-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

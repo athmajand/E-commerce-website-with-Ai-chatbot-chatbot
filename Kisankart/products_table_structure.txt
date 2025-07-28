@@ -1,0 +1,1 @@
+id - int(11)\nname - varchar(255)\ndescription - text\nprice - decimal(10,2)\ndiscount_price - decimal(10,2)\ncategory_id - int(11)\nseller_id - int(11)\nstock_quantity - int(11)\nimage_url - varchar(255)\nis_featured - tinyint(1)\nstatus - enum('active','inactive','out_of_stock')\ncreated_at - datetime\nupdated_at - datetime\n

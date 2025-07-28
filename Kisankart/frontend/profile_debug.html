@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Debug - Kisan Kart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        pre {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Profile Debug Information</h1>
+        
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>LocalStorage Data</h5>
+                    </div>
+                    <div class="card-body">
+                        <pre id="localStorage-data">Loading...</pre>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>API Test Results</h5>
+                    </div>
+                    <div class="card-body">
+                        <pre id="api-test-results">Loading...</pre>
+                        <button id="test-api-btn" class="btn btn-primary mt-3">Test API</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Debug Actions</h5>
+                    </div>
+                    <div class="card-body">
+                        <button id="run-debug-btn" class="btn btn-info me-2">Run Database Debug</button>
+                        <button id="clear-storage-btn" class="btn btn-warning me-2">Clear LocalStorage</button>
+                        <button id="set-dummy-data-btn" class="btn btn-success me-2">Set Dummy Profile Data</button>
+                        <button id="go-to-profile-btn" class="btn btn-primary">Go to Profile Page</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Debug Output</h5>
+                    </div>
+                    <div class="card-body">
+                        <pre id="debug-output">No debug output yet...</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // API base URL
+        const API_BASE_URL = 'http://localhost:8080/Kisankart/api';
+        
+        // Function to display localStorage data
+        function displayLocalStorageData() {
+            const localStorageData = {};
+            
+            // Get all items from localStorage
+            for (let i = 0; i < localStorage.length; i++) {
+                const key = localStorage.key(i);
+                localStorageData[key] = localStorage.getItem(key);
+            }
+            
+            // Display data
+            document.getElementById('localStorage-data').textContent = JSON.stringify(localStorageData, null, 2);
+        }
+        
+        // Function to test API
+        async function testAPI() {
+            try {
+                document.getElementById('api-test-results').textContent = 'Testing API...';
+                
+                const response = await fetch(`${API_BASE_URL}/test_profile.php`, {
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('jwt_token')}`
+                    }
+                });
+                
+                const data = await response.json();
+                
+                document.getElementById('api-test-results').textContent = JSON.stringify(data, null, 2);
+            } catch (error) {
+                document.getElementById('api-test-results').textContent = `Error: ${error.message}`;
+            }
+        }
+        
+        // Function to run database debug
+        async function runDatabaseDebug() {
+            try {
+                document.getElementById('debug-output').textContent = 'Running database debug...';
+                
+                const response = await fetch(`${API_BASE_URL}/debug.php`);
+                const text = await response.text();
+                
+                document.getElementById('debug-output').textContent = text;
+            } catch (error) {
+                document.getElementById('debug-output').textContent = `Error: ${error.message}`;
+            }
+        }
+        
+        // Function to clear localStorage
+        function clearLocalStorage() {
+            localStorage.clear();
+            displayLocalStorageData();
+            document.getElementById('debug-output').textContent = 'LocalStorage cleared.';
+        }
+        
+        // Function to set dummy profile data
+        function setDummyProfileData() {
+            localStorage.setItem('firstName', 'John');
+            localStorage.setItem('lastName', 'Doe');
+            localStorage.setItem('email', 'john.doe@example.com');
+            localStorage.setItem('jwt_token', 'dummy_token');
+            
+            displayLocalStorageData();
+            document.getElementById('debug-output').textContent = 'Dummy profile data set.';
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Display localStorage data
+            displayLocalStorageData();
+            
+            // Add event listeners
+            document.getElementById('test-api-btn').addEventListener('click', testAPI);
+            document.getElementById('run-debug-btn').addEventListener('click', runDatabaseDebug);
+            document.getElementById('clear-storage-btn').addEventListener('click', clearLocalStorage);
+            document.getElementById('set-dummy-data-btn').addEventListener('click', setDummyProfileData);
+            document.getElementById('go-to-profile-btn').addEventListener('click', () => {
+                window.location.href = 'profile.html';
+            });
+            
+            // Test API on load if token exists
+            if (localStorage.getItem('jwt_token')) {
+                testAPI();
+            } else {
+                document.getElementById('api-test-results').textContent = 'No JWT token found in localStorage.';
+            }
+        });
+    </script>
+</body>
+</html>

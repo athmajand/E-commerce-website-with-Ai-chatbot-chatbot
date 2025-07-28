@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Direct Login - Kisan Kart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="text-center">Direct Login</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="direct-login-form">
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" id="password" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-primary">Login</button>
+                            </div>
+                        </form>
+                        <div class="alert alert-danger mt-3" id="error-message" style="display: none;"></div>
+                        <div class="alert alert-success mt-3" id="success-message" style="display: none;"></div>
+                    </div>
+                </div>
+
+                <div class="card mt-4">
+                    <div class="card-header">
+                        <h3 class="text-center">Manual Data Entry</h3>
+                    </div>
+                    <div class="card-body">
+                        <form id="manual-data-form">
+                            <div class="mb-3">
+                                <label for="manual-firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="manual-firstName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="manual-lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="manual-lastName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="manual-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="manual-email" required>
+                            </div>
+                            <div class="d-grid">
+                                <button type="submit" class="btn btn-success">Set Data & Go to Profile</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // API base URL
+        const API_BASE_URL = 'http://localhost:8080/Kisankart/api';
+
+        // Direct login form
+        document.getElementById('direct-login-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/direct_login.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Show success message
+                    document.getElementById('success-message').textContent = data.message;
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('error-message').style.display = 'none';
+
+                    // Store user data in localStorage
+                    localStorage.setItem('jwt_token', data.user.token);
+                    localStorage.setItem('user_id', data.user.id);
+                    localStorage.setItem('username', data.user.username);
+                    localStorage.setItem('email', data.user.email);
+                    localStorage.setItem('user_role', data.user.role);
+
+                    // Get user profile data
+                    try {
+                        const profileResponse = await fetch(`${API_BASE_URL}/direct_profile.php?id=${data.user.id}`);
+                        const profileData = await profileResponse.json();
+
+                        if (profileData.status === 'success') {
+                            localStorage.setItem('firstName', profileData.user.firstName || '');
+                            localStorage.setItem('lastName', profileData.user.lastName || '');
+                        }
+                    } catch (profileError) {
+                        console.error('Error fetching profile:', profileError);
+                    }
+
+                    // Redirect to dashboard page after 1 second
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1000);
+                } else {
+                    // Show error message
+                    document.getElementById('error-message').textContent = data.message;
+                    document.getElementById('error-message').style.display = 'block';
+                    document.getElementById('success-message').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                document.getElementById('error-message').textContent = 'An error occurred. Please try again.';
+                document.getElementById('error-message').style.display = 'block';
+                document.getElementById('success-message').style.display = 'none';
+            }
+        });
+
+        // Manual data form
+        document.getElementById('manual-data-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const firstName = document.getElementById('manual-firstName').value;
+            const lastName = document.getElementById('manual-lastName').value;
+            const email = document.getElementById('manual-email').value;
+
+            // Store data in localStorage
+            localStorage.setItem('firstName', firstName);
+            localStorage.setItem('lastName', lastName);
+            localStorage.setItem('email', email);
+            localStorage.setItem('jwt_token', 'dummy_token');
+
+            // Redirect to dashboard page
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

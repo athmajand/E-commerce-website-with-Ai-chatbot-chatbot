@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>XAMPP Installation Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        h1 { color: #1e8449; }
+        .section { margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+        .warning { color: orange; font-weight: bold; }
+        .code { background: #f5f5f5; padding: 10px; border-radius: 5px; font-family: monospace; }
+        img { max-width: 100%; height: auto; border: 1px solid #ddd; margin: 10px 0; }
+        ol li, ul li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <h1>XAMPP Installation Guide for Kisan Kart</h1>
+    
+    <div class="section">
+        <h2>Problem Diagnosis</h2>
+        <p>The current error "Database connection failed" is occurring because the PHP MySQL extensions are not properly installed or configured. This is needed for PHP to connect to the MySQL database.</p>
+        
+        <p>To fix this issue, we need to install XAMPP, which includes:</p>
+        <ul>
+            <li>Apache web server</li>
+            <li>MySQL database server</li>
+            <li>PHP with all necessary extensions</li>
+            <li>phpMyAdmin for database management</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Step 1: Download XAMPP</h2>
+        <ol>
+            <li>Go to the official XAMPP website: <a href="https://www.apachefriends.org/download.html" target="_blank">https://www.apachefriends.org/download.html</a></li>
+            <li>Download the latest version of XAMPP for Windows</li>
+            <li>Choose the version with PHP 8.0 or higher</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Step 2: Install XAMPP</h2>
+        <ol>
+            <li>Run the downloaded installer</li>
+            <li>You may get a UAC (User Account Control) warning - click "Yes" to proceed</li>
+            <li>In the setup wizard, click "Next"</li>
+            <li>Select the components to install. Make sure the following are checked:
+                <ul>
+                    <li>Apache</li>
+                    <li>MySQL</li>
+                    <li>PHP</li>
+                    <li>phpMyAdmin</li>
+                </ul>
+            </li>
+            <li>Choose the installation folder (default is C:\xampp) and click "Next"</li>
+            <li>Uncheck "Learn more about Bitnami" if you don't need it</li>
+            <li>Click "Next" and then "Install" to begin the installation</li>
+            <li>Wait for the installation to complete</li>
+            <li>When installation is finished, check "Start Control Panel" and click "Finish"</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Step 3: Start Apache and MySQL</h2>
+        <ol>
+            <li>In the XAMPP Control Panel, click the "Start" buttons next to Apache and MySQL</li>
+            <li>Both services should start and their status indicators should turn green</li>
+            <li>If you get port conflicts, you may need to change the ports or stop conflicting services</li>
+        </ol>
+        <p><img src="https://www.apachefriends.org/images/xampp-panel.jpg" alt="XAMPP Control Panel"></p>
+    </div>
+    
+    <div class="section">
+        <h2>Step 4: Verify Installation</h2>
+        <ol>
+            <li>Open your web browser and go to <a href="http://localhost" target="_blank">http://localhost</a></li>
+            <li>You should see the XAMPP welcome page</li>
+            <li>Click on "phpMyAdmin" in the top menu to verify database access</li>
+            <li>Create a new database named "kisan_kart" if it doesn't exist</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Step 5: Move Your Project Files</h2>
+        <ol>
+            <li>Copy your Kisan Kart project files to the htdocs folder (C:\xampp\htdocs\Kisankart)</li>
+            <li>Make sure all files are in the correct location</li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Step 6: Test Your Application</h2>
+        <ol>
+            <li>Open your web browser and go to <a href="http://localhost/Kisankart/" target="_blank">http://localhost/Kisankart/</a></li>
+            <li>Try to log in to your application</li>
+            <li>If you still encounter issues, run the MySQL diagnostic tool: <a href="http://localhost/Kisankart/mysql_diagnostic.php" target="_blank">http://localhost/Kisankart/mysql_diagnostic.php</a></li>
+        </ol>
+    </div>
+    
+    <div class="section">
+        <h2>Troubleshooting</h2>
+        <ul>
+            <li><strong>Port conflicts:</strong> If Apache or MySQL won't start due to port conflicts, you can change the ports in the XAMPP Control Panel by clicking "Config" next to each service.</li>
+            <li><strong>Missing database:</strong> If your database doesn't exist, create it using phpMyAdmin or run your database creation script.</li>
+            <li><strong>Permission issues:</strong> Make sure XAMPP has the necessary permissions to access your files and folders.</li>
+            <li><strong>PHP extensions:</strong> If specific PHP extensions are missing, you can enable them by editing the php.ini file in the XAMPP installation folder.</li>
+        </ul>
+    </div>
+    
+    <div class="section">
+        <h2>Next Steps</h2>
+        <p>After installing XAMPP and verifying that it works correctly:</p>
+        <ol>
+            <li>Go to <a href="http://localhost/phpmyadmin" target="_blank">http://localhost/phpmyadmin</a> to manage your database</li>
+            <li>Create the necessary tables for your application if they don't exist</li>
+            <li>Try logging in to your application again</li>
+        </ol>
+    </div>
+</body>
+</html>

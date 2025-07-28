@@ -1,0 +1,42 @@
+/* Background image styles for login page left panel */
+.left-panel {
+    background: url('images/categories/grains.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    transition: background 1s ease-in-out;
+}
+
+.left-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    z-index: 1;
+}
+
+.left-panel h2,
+.left-panel p,
+.left-panel button {
+    position: relative;
+    z-index: 2;
+    color: #000;
+}
+.left-panel h2{
+    color: #fff;
+}
+.left-panel p{
+    color: #fff;
+}
+.left-panel button{
+    color: #fff;
+    border-color: #fff;
+}
+.left-panel button:hover{
+    color: #000;
+    background-color: #fff;
+} 

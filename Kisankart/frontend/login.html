@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="0;url=../login.php">
+    <title>Redirecting to Login - Kisankart</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+            text-align: center;
+        }
+        .redirect-message {
+            max-width: 500px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #1e8449;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #1e8449;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+        a:hover {
+            background-color: #166938;
+        }
+    </style>
+</head>
+<body>
+    <div class="redirect-message">
+        <h2>Redirecting to Login</h2>
+        <p>You are being redirected to the login page. If you are not redirected automatically, please click the button below.</p>
+        <a href="../login.php">Go to Login</a>
+    </div>
+
+    <script>
+        // Get URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const redirect = urlParams.get('redirect');
+
+        // If there's a redirect parameter, pass it to the login.php page
+        if (redirect) {
+            // Update the meta refresh tag
+            document.querySelector('meta[http-equiv="refresh"]').content = `0;url=../login.php?redirect=${redirect}`;
+
+            // Update the manual link
+            document.querySelector('a').href = `../login.php?redirect=${redirect}`;
+        }
+    </script>
+</body>
+</html>

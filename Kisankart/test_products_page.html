@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Products Page - Kisan Kart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="frontend/css/dynamic-image-styles.css">
+    <link rel="stylesheet" href="frontend/css/product-cards.css">
+    <style>
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .debug-info {
+            background-color: #e3f2fd;
+            border: 1px solid #2196f3;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="text-center mb-4">Test Products Page - Image Fitting & Zoom</h1>
+        
+        <div class="debug-info">
+            <h5><i class="fas fa-info-circle"></i> Debug Information</h5>
+            <p><strong>Expected Visual Indicators:</strong></p>
+            <ul>
+                <li><span style="color: #4CAF50;">Green border</span> around product images (indicating new styles loaded)</li>
+                <li><span style="color: #FF9800;">Orange border</span> around image containers</li>
+                <li><span style="color: #2196F3;">Blue border</span> on hover (indicating zoom effect)</li>
+            </ul>
+            <p><strong>Instructions:</strong> Hover over the product images to see the zoom effects!</p>
+        </div>
+        
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <!-- Test Product Card 1 -->
+            <div class="col">
+                <div class="card product-card">
+                    <div class="image-container" style="background-color: #f8f9fa;">
+                        <img src="uploads/products/1750442556_Apple.webp" 
+                             class="product-image" 
+                             alt="Apple" 
+                             data-size="default" 
+                             data-padding="medium" 
+                             data-fit="cover" 
+                             data-background="light"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+QXBwbGU8L3RleHQ+PC9zdmc+';">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Apple (Cover Mode)</h5>
+                        <p class="card-text">Test product with cover fit and zoom effect</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-5 fw-bold text-success">₹50.00</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <button class="btn btn-primary w-100 mb-2">Buy Now</button>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-success flex-grow-1 me-2">Add to Cart</button>
+                            <button class="btn btn-outline-success">❤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Test Product Card 2 -->
+            <div class="col">
+                <div class="card product-card">
+                    <div class="image-container" style="background-color: #ffffff;">
+                        <img src="uploads/products/1747571779_Carrot1.jpg" 
+                             class="product-image" 
+                             alt="Carrot" 
+                             data-size="large" 
+                             data-padding="small" 
+                             data-fit="contain" 
+                             data-background="white"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+Q2Fycm90PC90ZXh0Pjwvc3ZnPg==';">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Carrot (Contain Mode)</h5>
+                        <p class="card-text">Test product with contain fit and zoom effect</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-5 fw-bold text-success">₹30.00</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <button class="btn btn-primary w-100 mb-2">Buy Now</button>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-success flex-grow-1 me-2">Add to Cart</button>
+                            <button class="btn btn-outline-success">❤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Test Product Card 3 -->
+            <div class="col">
+                <div class="card product-card">
+                    <div class="image-container" style="background-color: #6c757d;">
+                        <img src="uploads/products/1747572297_Carrot1.jpg" 
+                             class="product-image" 
+                             alt="Carrot 2" 
+                             data-size="small" 
+                             data-padding="large" 
+                             data-fit="cover" 
+                             data-background="dark"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0iI2Y4ZjlmYSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTgiIGZpbGw9IiM2Yzc1N2QiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIwLjNlbSI+Q2Fycm90IDI8L3RleHQ+PC9zdmc+';">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Carrot 2 (Small Size)</h5>
+                        <p class="card-text">Test product with small size and zoom effect</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-5 fw-bold text-success">₹25.00</span>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top-0">
+                        <button class="btn btn-primary w-100 mb-2">Buy Now</button>
+                        <div class="d-flex justify-content-between">
+                            <button class="btn btn-success flex-grow-1 me-2">Add to Cart</button>
+                            <button class="btn btn-outline-success">❤</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4">
+            <div class="alert alert-info">
+                <h5>What to check:</h5>
+                <ul>
+                    <li><strong>Visual Indicators:</strong> You should see colored borders around images and containers</li>
+                    <li><strong>Zoom Effects:</strong> Hover over images to see smooth zoom transitions</li>
+                    <li><strong>Image Fitting:</strong> Images should properly fill their containers</li>
+                    <li><strong>Responsive Design:</strong> Try resizing the browser window</li>
+                </ul>
+                <p><strong>If you don't see the colored borders, the new CSS is not loading properly.</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
